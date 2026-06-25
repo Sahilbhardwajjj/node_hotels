@@ -4,7 +4,7 @@ const Person = require("../models/Person");
 const router = express.Router();
 
 // POST: Adding new Person
-router.post("/person", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const data = req.body;
     const newPerson = new Person(data);
@@ -20,7 +20,7 @@ router.post("/person", async (req, res) => {
 });
 
 // GET: Getting all the person in the restaurant
-router.get("/persons", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const data = await Person.find();
     res.status(200).json({
@@ -35,7 +35,7 @@ router.get("/persons", async (req, res) => {
 });
 
 // GET: Getting only person specified with the work on the url ?work=waiter
-router.get("/persons/:workType", async (req, res) => {
+router.get("/:workType", async (req, res) => {
   try {
     const data = req.params.workType;
     const users = await Person.find({ work: data });
@@ -52,7 +52,7 @@ router.get("/persons/:workType", async (req, res) => {
 
 // GET: Getting person with specific details such as age:18
 // /personDetail?age=28
-router.get("/personDetail", async (req, res) => {
+router.get("/detail", async (req, res) => {
   try {
     const data = req.query;
 
@@ -69,7 +69,7 @@ router.get("/personDetail", async (req, res) => {
 });
 
 // GET: Get person by id and populate menu
-router.get("/person/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const user = await Person.find({ _id: id });
@@ -86,7 +86,7 @@ router.get("/person/:id", async (req, res) => {
 });
 
 // PATCH: Updating the person entire Data
-router.patch("/personUpdate/:id", async (req, res) => {
+router.patch("/update/:id", async (req, res) => {
   try {
     const updateUserId = req.params.id;
     const updateInfo = req.body;
@@ -123,7 +123,7 @@ router.patch("/personUpdate/:id", async (req, res) => {
 });
 
 // Delete: Deleting a data
-router.delete("/person/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const id = req.params.id;
     // Check if person exist

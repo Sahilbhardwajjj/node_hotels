@@ -4,7 +4,7 @@ const Menu = require("../models/Menu");
 const router = express.Router();
 
 // POST: Posting menu items
-router.post("/menu", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     const data = req.body;
     const newMenu = new Menu(data);
@@ -21,7 +21,7 @@ router.post("/menu", async (req, res) => {
 });
 
 // GET: Reading all the menus
-router.get("/menus", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const menu = await Menu.find();
 
@@ -46,7 +46,7 @@ router.get("/menus", async (req, res) => {
 });
 
 // GET: Specific menu by id
-router.get("/menu/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const id = req.params.id;
 
@@ -66,7 +66,7 @@ router.get("/menu/:id", async (req, res) => {
 });
 
 // Patch : Update menu item
-router.patch("/menu/:id", async (req, res) => {
+router.patch("/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const data = req.body;
@@ -86,7 +86,7 @@ router.patch("/menu/:id", async (req, res) => {
   }
 });
 
-router.delete("/menu/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const id = req.params.id;
 

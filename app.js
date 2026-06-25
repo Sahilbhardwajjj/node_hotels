@@ -9,8 +9,8 @@ const app = express();
 app.use(express.json());
 
 // Routes
-app.use("/api", personRoutes); // All person routes start with /api
-app.use("/api", menuRoutes); // All menu routes start with /api
+app.use("/person", personRoutes); // All person routes start with /api
+app.use("/menu", menuRoutes); // All menu routes start with /api
 
 // Home route
 app.get("/", (req, res) => {
