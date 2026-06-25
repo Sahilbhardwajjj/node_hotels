@@ -14,27 +14,7 @@ app.use("/api", menuRoutes); // All menu routes start with /api
 
 // Home route
 app.get("/", (req, res) => {
-  res.json({
-    message: "🏨 Hotel Management API",
-    endpoints: {
-      persons: {
-        create: "POST /api/person",
-        getAll: "GET /api/persons",
-        getOne: "GET /api/person/:id",
-        update: "PUT /api/person/:id",
-        partialUpdate: "PATCH /api/person/:id",
-        delete: "DELETE /api/person/:id",
-      },
-      menus: {
-        create: "POST /api/menu",
-        getAll: "GET /api/menus",
-        getOne: "GET /api/menu/:id",
-        update: "PUT /api/menu/:id",
-        partialUpdate: "PATCH /api/menu/:id",
-        delete: "DELETE /api/menu/:id",
-      },
-    },
-  });
+  res.json({ messge: "This is the Home Page" });
 });
 
 // Error handling middleware
@@ -52,7 +32,7 @@ const startServer = async () => {
   try {
     await connectDb();
 
-    const PORT = process.env.PORT || 3000;
+    const PORT = process.env.PORT;
     app.listen(PORT, () => {
       console.log(`✓ Server running on port ${PORT}`);
     });
