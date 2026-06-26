@@ -2,11 +2,13 @@ const express = require("express");
 const connectDb = require("./src/config/db.js");
 const personRoutes = require("./src/routes/personRoutes.js");
 const menuRoutes = require("./src/routes/menuRoutes.js");
+const loggedInfo = require("./src/middleware/loggingInfo.js");
 
 const app = express();
 
 // Middleware
 app.use(express.json());
+app.use(loggedInfo);
 
 // Routes
 app.use("/person", personRoutes); // All person routes start with /api
